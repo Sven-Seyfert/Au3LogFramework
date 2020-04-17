@@ -1,0 +1,113 @@
+@font-face {
+    font-family: hack;
+    src: url(../fonts/hack/hack-regular.ttf);
+}
+body {
+    background-color: #ffffff;
+    font-family: Hack, Consolas, Monospace;
+    font-size: 14px;
+    margin: 30px auto;
+    min-height: 900px;
+    width: 1500px;
+}
+a {
+    color: #734863;
+    text-decoration: none;
+}
+hr {
+    border: 0px;
+    border-top: 1px solid #bbbbbb;
+}
+h2 {
+    color: #557a95;
+}
+h4 {
+    background-color: #9FB3C3;
+    border-radius: 2px;
+    border: 1px solid #557a95;
+    margin-bottom: 0px;
+    padding: 6px 6px 6px 12px;
+}
+h4:hover, button:hover {
+    background-color: #E08E8E;
+    cursor: pointer;
+}
+button {
+    background-color: #9FB3C3;
+    border-radius: 2px;
+    border: 0px;
+    font-family: Hack, Consolas, Monospace;
+    font-size: 12px;
+    padding: 8px;
+    width: 140px;
+}
+#button2, #toggle {
+    display: none;
+}
+#toggle {
+    font-weight: normal;
+}
+#footerText {
+    font-size: 13px;
+    margin: -19px 0px 30px 0px;
+    text-align: right;
+}
+p {
+    background-color: #734863;
+    border-radius: 2px;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 8px 8px 8px 12px;
+}
+span, .bold td {
+    font-weight: bold;
+}
+table {
+    border-spacing: 6px;
+    border-radius: 2px;
+    border: 1px solid #557a95;
+    border-top: 1px solid transparent;
+    width: 100%;
+}
+td {
+    border-radius: 2px;
+    border: 1px solid #cbcbcb;
+    font-size: 12px;
+    padding: 2px 6px 2px 6px;
+}
+#headline {
+    position: relative;
+    top: 11px;
+}
+#firstChartDiv {
+    margin: 25px 0px 20px 250px;
+    width: 450px;
+}
+#secondChartDiv {
+    margin: -246px 0px 50px 780px;
+    width: 450px;
+}
+.logo {
+    float: left;
+    margin: -10px 20px 0px 0px;
+    width: 64px;
+}
+.information {
+    font-size: 13px;
+    text-align: right;
+}
+.graphView {
+    display: inline-block;
+    width: 250px;
+}
+.result {
+    display: inline-block;
+    width: 182px;
+}
+.result:nth-child(even) {
+    border: 1px solid red;
+    margin-left: 100px;
+}
+.alginCenter {
+    text-align: center;
+}
