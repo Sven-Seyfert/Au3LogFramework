@@ -47,7 +47,7 @@ Func _callAu3LogFramework( $iAu3LogFrameworkAction, $sTestObject, $sTestScenario
         '"' & $sTestScenarioAdditionalInfo & '" ' & _
         '"' & $sSystemUnderTestTitle & '"'
 
-    ConsoleWrite( '|' & $sArguments & '|' & @CRLF )
+    ToolTip( '|' & $sArguments & '|', 10, 10 )
     ShellExecuteWait( @ComSpec, ' /C cd "' & $sAu3LogFrameworkPath & '" && ' & $sAu3LogFrameworkExe & ' ' & $sArguments, '', '', @SW_HIDE )
 
     _randomSleep()
