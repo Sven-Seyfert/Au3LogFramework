@@ -1,8 +1,8 @@
 ; compiler information for AutoIt
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
-#AutoIt3Wrapper_Res_Description=Example (2020-04-17)
-#AutoIt3Wrapper_Res_Fileversion=0.5
+#AutoIt3Wrapper_Res_Description=Example (2020-04-20)
+#AutoIt3Wrapper_Res_Fileversion=0.6
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
@@ -31,6 +31,7 @@ Global $sAu3LogFrameworkReportPath    = '..\reports\'
 
 Global $sTestObjectName               = 'Example'
 Global $sScreenshotWindow             = 'Chrome'
+Global $iIndex                        = 1
 Global $sFileCurrentReport
 
 
@@ -47,7 +48,9 @@ Func _callAu3LogFramework( $iAu3LogFrameworkAction, $sTestObject, $sTestScenario
         '"' & $sTestScenarioAdditionalInfo & '" ' & _
         '"' & $sSystemUnderTestTitle & '"'
 
-    ToolTip( '|' & $sArguments & '|', 10, 10 )
+    ToolTip( $iIndex & ' of 25: ' & $sArguments, 10, 10 )
+    $iIndex += 1
+
     ShellExecuteWait( @ComSpec, ' /C cd "' & $sAu3LogFrameworkPath & '" && ' & $sAu3LogFrameworkExe & ' ' & $sArguments, '', '', @SW_HIDE )
 
     _randomSleep()
