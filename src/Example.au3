@@ -1,8 +1,8 @@
 ; compiler information for AutoIt
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
-#AutoIt3Wrapper_Res_Description=Example (2020-04-20)
-#AutoIt3Wrapper_Res_Fileversion=0.6
+#AutoIt3Wrapper_Res_Description=Example (2020-04-21)
+#AutoIt3Wrapper_Res_Fileversion=0.7
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
@@ -37,7 +37,7 @@ Global $sFileCurrentReport
 
 
 ; functions --------------------------------------------------------------------
-Func _callAu3LogFramework( $iAu3LogFrameworkAction, $sTestObject, $sTestScenario = '', $sTestScenarioState = '', $sTestScenarioStepType = '', $sTestScenarioStepDescription = '', $sTestScenarioAdditionalInfo = '', $sSystemUnderTestTitle = '' )
+Func _callAu3LogFramework( $iAu3LogFrameworkAction, $sTestObject = '', $sTestScenario = '', $sTestScenarioState = '', $sTestScenarioStepType = '', $sTestScenarioStepDescription = '', $sTestScenarioAdditionalInfo = '', $sSystemUnderTestTitle = '' )
     Local $sArguments = _
         '"' & $iAu3LogFrameworkAction & '" ' & _
         '"' & $sTestObject & '" ' & _
@@ -48,7 +48,7 @@ Func _callAu3LogFramework( $iAu3LogFrameworkAction, $sTestObject, $sTestScenario
         '"' & $sTestScenarioAdditionalInfo & '" ' & _
         '"' & $sSystemUnderTestTitle & '"'
 
-    ToolTip( $iIndex & ' of 25: ' & $sArguments, 10, 10 )
+    ToolTip( $iIndex & ' of 26: ' & $sArguments, 10, 10 )
     $iIndex += 1
 
     ShellExecuteWait( @ComSpec, ' /C cd "' & $sAu3LogFrameworkPath & '" && ' & $sAu3LogFrameworkExe & ' ' & $sArguments, '', '', @SW_HIDE )
@@ -155,4 +155,6 @@ _callAu3LogFramework( 'test', $sTestObjectName, 'Seventh test name', 'Ok', 'Then
 
 _callAu3LogFramework( 'test', $sTestObjectName, 'Eighth test name', 'Ok', 'Given', 'Test with status Ok' )
 _callAu3LogFramework( 'test', $sTestObjectName, 'Eighth test name', 'Ok', 'When', 'Test with status Ok' )
-_callAu3LogFramework( 'stop', $sTestObjectName, 'Eighth test name', 'Ok', 'Then', 'Test with status Ok' )
+_callAu3LogFramework( 'test', $sTestObjectName, 'Eighth test name', 'Ok', 'Then', 'Test with status Ok' )
+
+_callAu3LogFramework( 'stop' )

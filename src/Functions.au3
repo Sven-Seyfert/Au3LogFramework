@@ -144,11 +144,13 @@ EndFunc
 
 Func _addScreenshot( $sState, $sText )
     Switch $sState
-        Case 'screenshot'
+        Case 'screenshot', 'error'
             $sText = StringReplace( $sText, '#{_setScreenshotFileToHtml()}#', _setScreenshotFileToHtml() )
+
         Case 'warn'
             $sText = StringReplace( $sText, '#{_setScreenshotFileToHtml()}#', _setScreenshotFileToHtml() )
             _renewIniValue( 'WasThereAWarnInTheCurrentTestScenario', 'true' )
+
         Case Else
             $sText = StringReplace( $sText, '#{_setScreenshotFileToHtml()}#', '' )
     EndSwitch
@@ -184,6 +186,7 @@ Func _renewChartSectionValues()
 
         Case 'error'
             _renewIniValue( 'CountError', $aIni[$eCountError] + 1 )
+            _createScreenshot()
     EndSwitch
 
     Local $iFirstChartPercentageForOk     = Round( 100 / $aIni[$eTestScenarioNumber] * ( $aIni[$eTestScenarioNumber] - $aIni[$eCountError] ) )

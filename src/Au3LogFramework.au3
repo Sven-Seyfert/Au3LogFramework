@@ -1,8 +1,8 @@
 ; compiler information for AutoIt
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
-#AutoIt3Wrapper_Res_Description=Au3LogFramework (2020-04-17)
-#AutoIt3Wrapper_Res_Fileversion=0.40
+#AutoIt3Wrapper_Res_Description=Au3LogFramework (2020-04-21)
+#AutoIt3Wrapper_Res_Fileversion=0.42
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
@@ -38,7 +38,8 @@ If $aInst[0][0] > 1 Then Exit
 Switch $aCmdArg[$eAu3LogFrameworkAction]
     Case 'start'
         _createReportStructure()
-    Case 'test', 'stop'
+
+    Case 'test'
         Switch $aCmdArg[$eTestScenarioState]
             Case 'ok', 'screenshot'
                 _createTestScenarioOrScenarioStep( $aColor[$eOk], $aCmdArg[$eTestScenarioState] )
@@ -48,14 +49,14 @@ Switch $aCmdArg[$eAu3LogFrameworkAction]
                 _createTestScenarioOrScenarioStep( $aColor[$eError], $aCmdArg[$eTestScenarioState] )
         EndSwitch
 
-        If $aCmdArg[$eAu3LogFrameworkAction] == 'stop' Then
-            $aIni[$eReportFile] = _readIniValue( 'ReportFile' )
-            _setTestScenarioExecutionTime( $aIni[$eReportFile] )
-            If StringLower( $bSilentModeWithoutMsgBoxes ) == 'false' Then
-                If MsgBox( $iMsgBoxQuestionIcon, 'Question', 'Processing done.' & @CRLF & 'Open log report in default browser?', 30 ) == 6 Then
-                    ShellExecute( $aIni[$eReportFile] )
-                EndIf
+    Case 'stop'
+        $aIni[$eReportFile] = _readIniValue( 'ReportFile' )
+        _setTestScenarioExecutionTime( $aIni[$eReportFile] )
+        If StringLower( $bSilentModeWithoutMsgBoxes ) == 'false' Then
+            If MsgBox( $iMsgBoxQuestionIcon, 'Question', 'Processing done.' & @CRLF & 'Open log report in default browser?', 30 ) == 6 Then
+                ShellExecute( $aIni[$eReportFile] )
             EndIf
-            Exit
         EndIf
+
+        Exit
 EndSwitch
