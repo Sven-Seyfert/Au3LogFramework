@@ -9,12 +9,14 @@ Global $sScreenshotTime                        = ''
 Global $aPath[$iEnumVariables]
        $aPath[$eConfig]                        = _PathFull( '..\config\' )
        $aPath[$eJs]                            = _PathFull( '..\js\' )
+       $aPath[$eOutput]                        = _PathFull( '..\output\' )
        $aPath[$eReports]                       = _PathFull( '..\reports\' )
 
 Global $aFile[$iEnumVariables]
        $aFile[$eConfig]                        = $aPath[$eConfig] & 'config.ini'
        $aFile[$eJs]                            = $aPath[$eJs] & 'script.js'
 
+Global $iAmountOfLastReportsToStore            = IniRead( $aFile[$eConfig], 'Settings', 'AmountOfLastReportsToStore', '20' )
 Global $bDebug                                 = IniRead( $aFile[$eConfig], 'Settings', 'Debug', 'False' )
 Global $bSilentModeWithoutMsgBoxes             = IniRead( $aFile[$eConfig], 'Settings', 'SilentModeWithoutMsgBoxes', 'False' )
 Global $sTestRunner                            = IniRead( $aFile[$eConfig], 'Settings', 'TestRunner', '' )

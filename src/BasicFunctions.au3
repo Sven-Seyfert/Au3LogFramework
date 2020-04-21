@@ -2,6 +2,30 @@ Func _showErrorMessage( $sText )
     If StringLower( $bSilentModeWithoutMsgBoxes ) == 'false' Then MsgBox( $iMsgBoxErrorIcon, 'Error', $sText, 30 )
 EndFunc
 
+Func _setMaxDirectories( $sPath, $i = 20 )
+    Local $aDirectories = _FileListToArray( $sPath, '*', 2, True )
+    If IsArray( $aDirectories ) Then
+        Local $iDirectoriesCount = $aDirectories[0]
+        If $iDirectoriesCount > $i Then
+            For $j = 1 To $iDirectoriesCount - $i Step 1
+                DirRemove( $aDirectories[$j], 1 )
+            Next
+        EndIf
+    EndIf
+EndFunc
+
+Func _setMaxFiles( $sPath, $i = 20 )
+    Local $aFiles = _FileListToArray( $sPath, '*.html', 1, True )
+    If IsArray( $aFiles ) Then
+        Local $iFilesCount = $aFiles[0]
+        If $iFilesCount > $i Then
+            For $j = 1 To $iFilesCount - $i Step 1
+                FileDelete( $aFiles[$j] )
+            Next
+        EndIf
+    EndIf
+EndFunc
+
 Func _writeFile( $sFile, $sText )
     Local $hFile = FileOpen( $sFile, $iFileOpenMode )
     FileWrite( $hFile, $sText )

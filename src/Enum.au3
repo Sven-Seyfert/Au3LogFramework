@@ -1,4 +1,4 @@
-Global $iEnumVariables = 33
+Global $iEnumVariables = 34
 Global Enum _
     $eAu3LogFrameworkAction, _
     $eConfig, _
@@ -15,6 +15,7 @@ Global Enum _
     $eLineOfLogEndTime, _
     $eLineOfTitleTag, _
     $eOk, _
+    $eOutput, _
     $eOutputPath, _
     $eReportFile, _
     $eReportHeadline, _

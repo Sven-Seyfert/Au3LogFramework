@@ -2,7 +2,7 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
 #AutoIt3Wrapper_Res_Description=Au3LogFramework (2020-04-21)
-#AutoIt3Wrapper_Res_Fileversion=0.42
+#AutoIt3Wrapper_Res_Fileversion=0.43
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
@@ -52,11 +52,15 @@ Switch $aCmdArg[$eAu3LogFrameworkAction]
     Case 'stop'
         $aIni[$eReportFile] = _readIniValue( 'ReportFile' )
         _setTestScenarioExecutionTime( $aIni[$eReportFile] )
+
         If StringLower( $bSilentModeWithoutMsgBoxes ) == 'false' Then
             If MsgBox( $iMsgBoxQuestionIcon, 'Question', 'Processing done.' & @CRLF & 'Open log report in default browser?', 30 ) == 6 Then
                 ShellExecute( $aIni[$eReportFile] )
             EndIf
         EndIf
+
+        _setMaxDirectories( $aPath[$eOutput], $iAmountOfLastReportsToStore )
+        _setMaxFiles( $aPath[$eReports], $iAmountOfLastReportsToStore)
 
         Exit
 EndSwitch
