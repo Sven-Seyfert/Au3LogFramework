@@ -80,3 +80,42 @@ Func _secondsToMinutes( $iGivenSeconds )
     If $iMinutes >= 1  Then Return StringFormat( '%02d:%02d', $iMinutes, $iSeconds ) & ' minutes'
     If $iSeconds <= 59 Then Return StringFormat( '%02d', $iSeconds ) & ' seconds'
 EndFunc
+
+Func _setDisplayResolution( $iDisplayWidth = @DesktopWidth, $iDisplayHeight = @DesktopHeight )
+    Local Const $CDS_TEST               = 0x00000002
+    Local Const $CDS_UPDATEREGISTRY     = 0x00000001
+    Local Const $DM_BITSPERPEL          = 0x00040000
+    Local Const $DM_DISPLAYFREQUENCY    = 0x00400000
+    Local Const $DM_PELSHEIGHT          = 0x00100000
+    Local Const $DM_PELSWIDTH           = 0x00080000
+    Local Const $HWND_BROADCAST         = 0xffff
+    Local Const $WM_DISPLAYCHANGE       = 0x007E
+
+    Local $iDisplayDepthInBitsPerPixel  = @DesktopDepth
+    Local $iDisplayRefreshRateInHertz   = @DesktopRefresh
+
+    Local $tDEVMODE                     = DllStructCreate( 'byte[32];int[10];byte[32];int[6]' )
+    Local $aEnumDisplaySettingsResult   = DllCall( 'user32.dll', 'int', 'EnumDisplaySettings', 'ptr', 0, 'long', 0, 'ptr', DllStructGetPtr( $tDEVMODE ) )
+
+    If @error Then Return -1
+    If Not IsArray( $aEnumDisplaySettingsResult ) Then Return -2
+    If $aEnumDisplaySettingsResult[0] == 0 Then Return -3
+
+    DllStructSetData( $tDEVMODE, 2, BitOR( $DM_PELSWIDTH, $DM_PELSHEIGHT, $DM_BITSPERPEL, $DM_DISPLAYFREQUENCY ), 5 )
+    DllStructSetData( $tDEVMODE, 4, $iDisplayWidth, 2 )
+    DllStructSetData( $tDEVMODE, 4, $iDisplayHeight, 3 )
+    DllStructSetData( $tDEVMODE, 4, $iDisplayDepthInBitsPerPixel, 1 )
+    DllStructSetData( $tDEVMODE, 4, $iDisplayRefreshRateInHertz, 5 )
+
+    Local $aChangeDisplaySettingsResult = DllCall( 'user32.dll', 'int', 'ChangeDisplaySettings', 'ptr', DllStructGetPtr( $tDEVMODE ), 'int', $CDS_TEST )
+
+    If @error Then Return -4
+    If Not IsArray( $aChangeDisplaySettingsResult ) Then Return -5
+
+    If $aChangeDisplaySettingsResult[0] == 0 Then
+        DllCall( 'user32.dll', 'int', 'ChangeDisplaySettings', 'ptr', DllStructGetPtr( $tDEVMODE ), 'int', $CDS_UPDATEREGISTRY )
+        DllCall( 'user32.dll', 'int', 'SendMessage', 'hwnd', $HWND_BROADCAST, 'int', $WM_DISPLAYCHANGE, 'int', $iDisplayDepthInBitsPerPixel, 'int', $iDisplayHeight * 2 ^ 16 + $iDisplayWidth )
+    EndIf
+
+    $tDEVMODE = ''
+EndFunc

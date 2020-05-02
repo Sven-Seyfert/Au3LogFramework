@@ -1,8 +1,8 @@
 ; compiler information for AutoIt
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
-#AutoIt3Wrapper_Res_Description=Au3LogFramework (2020-04-21)
-#AutoIt3Wrapper_Res_Fileversion=0.43
+#AutoIt3Wrapper_Res_Description=Au3LogFramework (2020-05-02)
+#AutoIt3Wrapper_Res_Fileversion=0.44
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
@@ -37,6 +37,8 @@ If $aInst[0][0] > 1 Then Exit
 ; processing -------------------------------------------------------------------
 Switch $aCmdArg[$eAu3LogFrameworkAction]
     Case 'start'
+        _setDisplayResolution( StringSplit( $sDisplayResolutionForScreenshots, 'x' )[1], StringSplit( $sDisplayResolutionForScreenshots, 'x' )[2] )
+        Sleep( 1000 )
         _createReportStructure()
 
     Case 'test'

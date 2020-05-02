@@ -18,6 +18,7 @@ Global $aFile[$iEnumVariables]
 
 Global $iAmountOfLastReportsToStore            = IniRead( $aFile[$eConfig], 'Settings', 'AmountOfLastReportsToStore', '20' )
 Global $bDebug                                 = IniRead( $aFile[$eConfig], 'Settings', 'Debug', 'False' )
+Global $sDisplayResolutionForScreenshots       = StringStripWS( IniRead( $aFile[$eConfig], 'Settings', 'DisplayResolutionForScreenshots', '1920x1080' ), 8 )
 Global $bSilentModeWithoutMsgBoxes             = IniRead( $aFile[$eConfig], 'Settings', 'SilentModeWithoutMsgBoxes', 'False' )
 Global $sTestRunner                            = IniRead( $aFile[$eConfig], 'Settings', 'TestRunner', '' )
 
