@@ -189,11 +189,11 @@ Func _renewChartSectionValues()
             _createScreenshot()
     EndSwitch
 
-    Local $iFirstChartPercentageForOk     = Round( 100 / $aIni[$eTestScenarioNumber] * ( $aIni[$eTestScenarioNumber] - $aIni[$eCountError] ) )
-    Local $iFirstChartPercentageForError  = Round( 100 / $aIni[$eTestScenarioNumber] * $aIni[$eCountError] )
-    Local $iSecondChartPercentageForOk    = Round( 100 / $aIni[$eScenarioStepMaxNumber] * $aIni[$eCountOk] )
-    Local $iSecondChartPercentageForError = Round( 100 / $aIni[$eScenarioStepMaxNumber] * $aIni[$eCountError] )
-    Local $iSecondChartPercentageForWarn  = Round( 100 / $aIni[$eScenarioStepMaxNumber] * $aIni[$eCountWarn] )
+    Local $iFirstChartPercentageForOk     = Round( 100 / $aIni[$eTestScenarioNumber] * ( $aIni[$eTestScenarioNumber] - $aIni[$eCountError] ), 1 )
+    Local $iFirstChartPercentageForError  = Round( 100 / $aIni[$eTestScenarioNumber] * $aIni[$eCountError], 1 )
+    Local $iSecondChartPercentageForOk    = Round( 100 / $aIni[$eScenarioStepMaxNumber] * $aIni[$eCountOk], 1 )
+    Local $iSecondChartPercentageForError = Round( 100 / $aIni[$eScenarioStepMaxNumber] * $aIni[$eCountError], 1 )
+    Local $iSecondChartPercentageForWarn  = Round( 100 / $aIni[$eScenarioStepMaxNumber] * $aIni[$eCountWarn], 1 )
 
     _writeToFileLine( $aFile[$eJs], $aIni[$eLineOfDataForFirstChart]  - 4, _StringRepeat( ' ', 12 ) & 'labels: ["OK (' & $iFirstChartPercentageForOk & '%)", "ERROR (' & $iFirstChartPercentageForError & '%)"],' )
     _writeToFileLine( $aFile[$eJs], $aIni[$eLineOfDataForSecondChart] - 4, _StringRepeat( ' ', 12 ) & 'labels: ["OK (' & $iSecondChartPercentageForOk & '%)", "ERROR (' & $iSecondChartPercentageForError & '%)", "WARN (' & $iSecondChartPercentageForWarn & '%)"],' )
