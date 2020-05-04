@@ -19,8 +19,12 @@ Global $aFile[$iEnumVariables]
 Global $iAmountOfLastReportsToStore            = IniRead( $aFile[$eConfig], 'Settings', 'AmountOfLastReportsToStore', '20' )
 Global $bDebug                                 = IniRead( $aFile[$eConfig], 'Settings', 'Debug', 'False' )
 Global $sDisplayResolutionForScreenshots       = StringStripWS( IniRead( $aFile[$eConfig], 'Settings', 'DisplayResolutionForScreenshots', '1920x1080' ), 8 )
+Global $bShouldDisplayResolutionBeAdjusted     = IniRead( $aFile[$eConfig], 'Settings', 'ShouldDisplayResolutionBeAdjusted', 'False' )
 Global $bSilentModeWithoutMsgBoxes             = IniRead( $aFile[$eConfig], 'Settings', 'SilentModeWithoutMsgBoxes', 'False' )
 Global $sTestRunner                            = IniRead( $aFile[$eConfig], 'Settings', 'TestRunner', '' )
+
+Global $iDesktopWidth                          = @DesktopWidth
+Global $iDesktopHeight                         = @DesktopHeight
 
 Global $aColor[$iEnumVariables]
        $aColor[$eOk]                           = '41B3A3'

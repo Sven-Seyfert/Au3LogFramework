@@ -20,7 +20,7 @@ Global $sHtmlMain = _
     _StringRepeat( ' ', 8 ) & '<b><i class="fa fa-laptop"></i> COMPUTER:</b> ' & @ComputerName & '&nbsp;&nbsp;&nbsp;' & _
                               '<b><i class="fa fa-flag-o"></i> OS:</b> ' & @OSVersion & ' ' & @OSArch & '&nbsp;&nbsp;&nbsp;' & _
                               '<b><i class="fa fa-user-o"></i> USER:</b> ' & @UserName & '&nbsp;&nbsp;&nbsp;' & _
-                              '<b><i class="fa fa-window-maximize"></i> RESOLUTION:</b> ' & @DesktopWidth & 'x' & @DesktopHeight & '&nbsp;&nbsp;&nbsp;' & _
+                              '<b><i class="fa fa-window-maximize"></i> RESOLUTION:</b> ' & $iDesktopWidth & 'x' & $iDesktopHeight & '&nbsp;&nbsp;&nbsp;' & _
                               '<b><i class="fa fa-linode"></i> TestRunner:</b> ' & $sTestRunner & '&nbsp;&nbsp;&nbsp;' & _
                               '<b><i class="fa fa-hourglass-half"></i> TEST DURATION:</b> 0 minutes' & @CRLF & _
     _StringRepeat( ' ', 4 ) & '</div>' & @CRLF & _
