@@ -16,8 +16,8 @@ Global $aFile[$iEnumVariables]
        $aFile[$eConfig]                        = $aPath[$eConfig] & 'config.ini'
        $aFile[$eJs]                            = $aPath[$eJs] & 'script.js'
 
-Global $iDesktopWidth                          = @DesktopWidth
-Global $iDesktopHeight                         = @DesktopHeight
+Global $iDisplayWidth                          = @DesktopWidth
+Global $iDisplayHeight                         = @DesktopHeight
 
 Global $iAmountOfLastReportsToStore            = IniRead( $aFile[$eConfig], 'Settings', 'AmountOfLastReportsToStore', '20' )
 Global $bDebug                                 = IniRead( $aFile[$eConfig], 'Settings', 'Debug', 'False' )
@@ -27,8 +27,8 @@ Global $bSilentModeWithoutMsgBoxes             = IniRead( $aFile[$eConfig], 'Set
 Global $sTestRunner                            = IniRead( $aFile[$eConfig], 'Settings', 'TestRunner', '' )
 
 If StringLower( $bShouldDisplayResolutionBeAdjusted ) == 'true' Then
-       $iDesktopWidth  = StringSplit( $sDisplayResolutionForScreenshots, 'x' )[1]
-       $iDesktopHeight = StringSplit( $sDisplayResolutionForScreenshots, 'x' )[2]
+       $iDisplayWidth  = StringSplit( $sDisplayResolutionForScreenshots, 'x' )[1]
+       $iDisplayHeight = StringSplit( $sDisplayResolutionForScreenshots, 'x' )[2]
 EndIf
 
 Global $aColor[$iEnumVariables]

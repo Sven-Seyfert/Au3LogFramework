@@ -81,7 +81,7 @@ Func _secondsToMinutes( $iGivenSeconds )
     If $iSeconds <= 59 Then Return StringFormat( '%02d', $iSeconds ) & ' seconds'
 EndFunc
 
-Func _setDisplayResolution( $iDisplayWidth = @DesktopWidth, $iDisplayHeight = @DesktopHeight )
+Func _setDisplayResolution()
     Local Const $CDS_TEST               = 0x00000002
     Local Const $CDS_UPDATEREGISTRY     = 0x00000001
     Local Const $DM_BITSPERPEL          = 0x00040000
