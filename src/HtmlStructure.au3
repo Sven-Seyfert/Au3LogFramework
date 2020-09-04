@@ -7,7 +7,7 @@ Global $sHtmlHead = _
     _StringRepeat( ' ', 4 ) & '<link rel="shortcut icon" href="../media/favicon.ico" type="image/x-icon" />' & @CRLF & _
     _StringRepeat( ' ', 4 ) & '<link rel="stylesheet" href="../css/fontAwesome.css">' & @CRLF & _
     _StringRepeat( ' ', 4 ) & '<link rel="stylesheet" href="../css/style.css">' & @CRLF & _
-    _StringRepeat( ' ', 4 ) & '<script src="../js/jQuery.3.3.1.min.js"></script>' & @CRLF & _
+    _StringRepeat( ' ', 4 ) & '<script src="../js/jQuery.min.js"></script>' & @CRLF & _
     _StringRepeat( ' ', 4 ) & '<script src="../js/chartJs.min.js"></script>' & @CRLF & _
     _StringRepeat( ' ', 4 ) & '<script src="../js/script.js"></script>' & @CRLF & _
     '</head>' & @CRLF & _
