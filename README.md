@@ -17,7 +17,7 @@
 
 ## Description
 
-Au3LogFramework [...] description [...].
+Au3LogFramework is a logging and reporting tool for Gherkin syntax like Cucumber or SpecFlow uses. It's designed to be a great reporting tool when you use BDD/BDT (behavior driven development/testing).
 
 ## Features
 
