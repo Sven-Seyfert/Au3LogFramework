@@ -29,7 +29,7 @@ function showCharts() {
     new Chart(document.getElementById("firstChart"), {
         type: "bar",
         data: {
-            labels: ["OK (71%)", "ERROR (29%)"],
+            labels: ["OK (71.4%)", "ERROR (28.6%)"],
             datasets: [
                 {
                     backgroundColor: ["#41b3a3", "#e7717d"],
@@ -56,7 +56,7 @@ function showCharts() {
     new Chart(document.getElementById("secondChart"), {
         type: "horizontalBar",
         data: {
-            labels: ["OK (75%)", "ERROR (8%)", "WARN (17%)"],
+            labels: ["OK (75%)", "ERROR (8.3%)", "WARN (16.7%)"],
             datasets: [
                 {
                     backgroundColor: ["#41b3a3", "#e7717d", "#fbc02d"],
