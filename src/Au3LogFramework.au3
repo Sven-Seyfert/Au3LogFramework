@@ -1,8 +1,9 @@
 ; compiler information for AutoIt
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
-#AutoIt3Wrapper_Res_Description=Au3LogFramework (2020-09-04)
-#AutoIt3Wrapper_Res_Fileversion=0.49
+#AutoIt3Wrapper_Outfile_x64=..\build\Au3LogFramework.exe
+#AutoIt3Wrapper_Res_Description=Au3LogFramework (2021-04-09)
+#AutoIt3Wrapper_Res_Fileversion=0.50
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
@@ -48,8 +49,10 @@ Switch $aCmdArg[$eAu3LogFrameworkAction]
         Switch $aCmdArg[$eTestScenarioState]
             Case 'ok', 'screenshot'
                 _createTestScenarioOrScenarioStep( $aColor[$eOk], $aCmdArg[$eTestScenarioState] )
+
             Case 'warn'
                 _createTestScenarioOrScenarioStep( $aColor[$eWarn], $aCmdArg[$eTestScenarioState] )
+
             Case 'error'
                 _createTestScenarioOrScenarioStep( $aColor[$eError], $aCmdArg[$eTestScenarioState] )
         EndSwitch

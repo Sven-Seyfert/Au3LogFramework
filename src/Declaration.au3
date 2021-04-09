@@ -91,5 +91,6 @@ Switch $iArgumentCount
 
     Case Else
        _showErrorMessage( 'Wrong count of arguments is used while calling ' & $sProgramName & '. Please read the documentation (README.md).' )
+
        Exit -1
 EndSwitch

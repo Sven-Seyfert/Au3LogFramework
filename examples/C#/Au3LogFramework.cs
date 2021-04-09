@@ -10,20 +10,25 @@ namespace BehaviorDrivenTesting.ThirdParty
 {
     public class Au3LogFramework
     {
-        private static IWebDriver WebDriver => Core.WebDriver.Instance;
+        private const string AU3_LOG_FRAMEWORK_EXE = "Au3LogFramework.exe";
         private const string TEST_OBJECT = "Example";
+
+        private static readonly string _codeBaseFolderPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase)?
+            .Replace("file:\\", string.Empty);
+
+        private static IWebDriver WebDriver => Chrome.Instance;
 
         public static void StartAu3LogFramework()
         {
             const string au3LogFrameworkAction = "start";
 
             var driveCharacter = GetProjectFolderPath()[0];
+
             var startInfo = new ProcessStartInfo
             {
                 WindowStyle = ProcessWindowStyle.Hidden,
                 FileName = "cmd.exe",
-                Arguments = $@" /C {driveCharacter}: && cd " +
-                            GetAu3LogFrameworkExeFilePath() +
+                Arguments = $@" /C {driveCharacter}: && cd ""{GetAu3LogFrameworkExeFilePath()}"" && {AU3_LOG_FRAMEWORK_EXE} " +
                             $@"""{au3LogFrameworkAction}"" " +
                             $@"""{TEST_OBJECT}"""
             };
@@ -37,12 +42,12 @@ namespace BehaviorDrivenTesting.ThirdParty
             const string au3LogFrameworkAction = "stop";
 
             var driveCharacter = GetProjectFolderPath()[0];
+
             var startInfo = new ProcessStartInfo
             {
                 WindowStyle = ProcessWindowStyle.Hidden,
                 FileName = "cmd.exe",
-                Arguments = $@" /C {driveCharacter}: && cd " +
-                            GetAu3LogFrameworkExeFilePath() +
+                Arguments = $@" /C {driveCharacter}: && cd ""{GetAu3LogFrameworkExeFilePath()}"" && {AU3_LOG_FRAMEWORK_EXE} " +
                             $@"""{au3LogFrameworkAction}"""
             };
 
@@ -62,12 +67,12 @@ namespace BehaviorDrivenTesting.ThirdParty
             }
 
             var driveCharacter = GetProjectFolderPath()[0];
+
             var startInfo = new ProcessStartInfo
             {
                 WindowStyle = ProcessWindowStyle.Hidden,
                 FileName = "cmd.exe",
-                Arguments = $@" /C {driveCharacter}: && cd " +
-                            GetAu3LogFrameworkExeFilePath() +
+                Arguments = $@" /C {driveCharacter}: && cd ""{GetAu3LogFrameworkExeFilePath()}"" && {AU3_LOG_FRAMEWORK_EXE} " +
                             $@"""{au3LogFrameworkAction}"" " +
                             $@"""{TEST_OBJECT}"" " +
                             $@"""{testScenario}"" " +
@@ -102,10 +107,7 @@ namespace BehaviorDrivenTesting.ThirdParty
 
         private static void StartAndWaitForProcess(ProcessStartInfo startInfo)
         {
-            var process = new Process
-            {
-                StartInfo = startInfo
-            };
+            var process = new Process { StartInfo = startInfo };
 
             process.Start();
             process.WaitForExit();
@@ -113,20 +115,35 @@ namespace BehaviorDrivenTesting.ThirdParty
 
         private static string GetProjectFolderPath()
         {
-            var debugFolderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            var binFolderPath = Directory.GetParent(debugFolderPath.Replace("file:\\", string.Empty)).FullName;
+            var parentFolderPath = GetParentFolderPath(_codeBaseFolderPath);
 
-            return Directory.GetParent(binFolderPath).FullName;
+            const int parentDirectoryAttempts = 4;
+
+            for (var i = 0; i < parentDirectoryAttempts; i++)
+            {
+                var subDirectories = Directory.GetDirectories(parentFolderPath);
+
+                if (Array.Exists(subDirectories, directory => directory.EndsWith("ThirdParty")))
+                {
+                    return parentFolderPath;
+                }
+
+                parentFolderPath = GetParentFolderPath(parentFolderPath);
+            }
+
+            throw new DirectoryNotFoundException();
+        }
+
+        private static string GetParentFolderPath(string frameworkVersionFolderPath)
+        {
+            return Directory
+                .GetParent(frameworkVersionFolderPath?.Replace("file:\\", string.Empty) ?? throw new DirectoryNotFoundException())?
+                .FullName;
         }
 
         private static string GetAu3LogFrameworkExeFilePath()
         {
-            const string au3LogFrameworkExe = "Au3LogFramework.exe";
-
-            var projectFolderPath = GetProjectFolderPath();
-            var au3LogFrameworkSrcFolder = $@"{projectFolderPath}\ThirdParty\Au3LogFramework\src";
-
-            return $@"""{au3LogFrameworkSrcFolder}"" && {au3LogFrameworkExe} ";
+            return $@"{GetProjectFolderPath()}\ThirdParty\Au3LogFramework\build";
         }
 
         private static void StoreCurrentCreatedReportToGlobalStore()
@@ -134,7 +151,7 @@ namespace BehaviorDrivenTesting.ThirdParty
             var projectFolderPath = GetProjectFolderPath();
             var au3LogFrameworkReportFolder = $@"{projectFolderPath}\ThirdParty\Au3LogFramework\reports";
 
-            GlobalStore.CurrentCreatedReport = Directory
+            StaticContext.CurrentCreatedReport = Directory
                 .GetFiles(au3LogFrameworkReportFolder, "*.html")
                 .Last();
         }
@@ -157,13 +174,13 @@ namespace BehaviorDrivenTesting.ThirdParty
             var projectFolderPath = GetProjectFolderPath();
             var au3LogFrameworkOutputFolder = $@"{projectFolderPath}\ThirdParty\Au3LogFramework\output";
 
-            var fileName = GetJustFileNameOfFilePath(GlobalStore.CurrentCreatedReport);
+            var fileName = GetJustFileNameOfFilePath(StaticContext.CurrentCreatedReport);
             var reportSubFolderName = fileName.Replace(".html", string.Empty);
 
-            var addtionalInformationFile = $@"{au3LogFrameworkOutputFolder}\{reportSubFolderName}\{GetFormatedDateTime()}.txt";
-            File.WriteAllText(addtionalInformationFile, content);
+            var additionalInformationFile = $@"{au3LogFrameworkOutputFolder}\{reportSubFolderName}\{GetFormatedDateTime()}.txt";
+            File.WriteAllText(additionalInformationFile, content);
 
-            return addtionalInformationFile;
+            return additionalInformationFile;
         }
 
         private static string GetHtmlATagWithAdditionalInfoFileLink(string filePath)
@@ -176,8 +193,9 @@ namespace BehaviorDrivenTesting.ThirdParty
 
         private static string GetAdditionalInfoHtmlATag(string testScenarioAdditionalInfo)
         {
-            var addtionalInformationFile = CreateAdditionalInfoFile(testScenarioAdditionalInfo);
-            return GetHtmlATagWithAdditionalInfoFileLink(addtionalInformationFile);
+            var additionalInformationFile = CreateAdditionalInfoFile(testScenarioAdditionalInfo);
+
+            return GetHtmlATagWithAdditionalInfoFileLink(additionalInformationFile);
         }
     }
 }

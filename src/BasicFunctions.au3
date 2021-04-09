@@ -1,5 +1,7 @@
 Func _showErrorMessage( $sText )
-    If StringLower( $bSilentModeWithoutMsgBoxes ) == 'false' Then MsgBox( $iMsgBoxErrorIcon, 'Error', $sText, 30 )
+    If StringLower( $bSilentModeWithoutMsgBoxes ) == 'false' Then
+        MsgBox( $iMsgBoxErrorIcon, 'Error', $sText, 30 )
+    EndIf
 EndFunc
 
 Func _setMaxDirectories( $sPath, $i = 20 )
@@ -118,4 +120,8 @@ Func _setDisplayResolution()
     EndIf
 
     $tDEVMODE = ''
+EndFunc
+
+Func _spaces( $iAmountOfSpaces )
+    Return _StringRepeat( ' ', $iAmountOfSpaces )
 EndFunc

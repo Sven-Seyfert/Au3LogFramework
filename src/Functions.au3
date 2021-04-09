@@ -109,6 +109,7 @@ Func _writeNewTestScenario( $sColor, $sTestScenarioState )
     _writeToFileLine( $aIni[$eReportFile], $iLine , $sHtmlNewTestScenario, False )
 
     Local $iLinesOfHtmlNewTestScenario = 7
+
     Return $iLinesOfHtmlNewTestScenario
 EndFunc
 
@@ -128,6 +129,7 @@ Func _writeNewScenarioStepOfAGivenTestScenario( $sColor, $sTestScenarioState )
     _replaceLine( _getFileLineNumberForLastSearchMatch( $aIni[$eReportFile], '<h4 data-h4>' ), 'color: #.+?;', 'color: #' & $sColor & ';' )
 
     Local $iLinesOfHtmlNewScenarioStep = 1
+
     Return $iLinesOfHtmlNewScenarioStep
 EndFunc
 
@@ -139,6 +141,7 @@ Func _replaceHtmlPlaceholder( $sColor, $sText )
     $sText = StringReplace( $sText, '#{$sExecutionTime}#', $sExecutionTime )
     $sText = StringReplace( $sText, '#{$eTestScenarioStepType}#', $aCmdArg[$eTestScenarioStepType] )
     $sText = StringReplace( $sText, '#{$eTestScenarioStepDescription}#', $aCmdArg[$eTestScenarioStepDescription] )
+
     Return   StringReplace( $sText, '#{$eTestScenarioAdditionalInfo}#', $aCmdArg[$eTestScenarioAdditionalInfo] )
 EndFunc
 
@@ -161,6 +164,7 @@ EndFunc
 Func _setScreenshotFileToHtml()
     $sScreenshotTime = @YEAR & '-' & @MON & '-' & @MDAY & ' ' & @HOUR & '''' & @MIN & '''' & @SEC & '''' & @MSEC
     Local $sScreenshotFile = StringReplace( $aIni[$eOutputPath] & $sScreenshotTime & $sImageExtension, '\', '/' )
+
     Return StringRegExpReplace( $sScreenshotFile, '(.+?)output', '../output', 1 )
 EndFunc
 
@@ -238,6 +242,7 @@ Func _setTestScenarioExecutionTime( $sFilePath )
             For $j = 1 To 200 Step 1
                 If StringInStr( $aFileContent[$i + 2 + $j], '</table>', 2 ) <> 0 Then
                     Local $sEndDate = _getDateTime( $aFileContent[$i + 2 + $j - 1] )
+
                     ExitLoop
                 EndIf
             Next
@@ -250,6 +255,7 @@ EndFunc
 
 Func _getDateTime( $sText )
     Local $aDateTime = StringRegExp( $sText, '^.+?<td>(\d{4})(.+?)</td>', 3 )
+
     Return StringTrimRight( StringReplace( $aDateTime[0] & $aDateTime[1], '-', '/' ), 4 )
 EndFunc
 

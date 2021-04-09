@@ -1,8 +1,8 @@
 ; compiler information for AutoIt
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\..\media\favicon.ico
-#AutoIt3Wrapper_Res_Description=Example (2020-09-19)
-#AutoIt3Wrapper_Res_Fileversion=0.8
+#AutoIt3Wrapper_Res_Description=Example (2021-04-09)
+#AutoIt3Wrapper_Res_Fileversion=0.9
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
@@ -24,7 +24,7 @@ If $aInst[0][0] > 1 Then Exit
 ; declaration ------------------------------------------------------------------
 Global $iFileOpenMode                 = $FO_OVERWRITE + $FO_CREATEPATH + $FO_UTF8_NOBOM
 
-Global $sAu3LogFrameworkPath          = _PathFull( '..\..\src' )
+Global $sAu3LogFrameworkPath          = _PathFull( '..\..\build' )
 Global $sAu3LogFrameworkExe           = 'Au3LogFramework.exe'
 Global $sAu3LogFrameworkOutputPath    = '..\..\output\'
 Global $sAu3LogFrameworkReportPath    = '..\..\reports\'
