@@ -1,7 +1,7 @@
 #####
 
 <p align="center">
-    <img src="http://sven-seyfert.de/media/logo_circle.png" width="80" />
+    <img src="https://github.com/Sven-Seyfert/Au3LogFramework/blob/master/media/favicon.ico" width="80" />
     <h2 align="center">Welcome to <code>Au3LogFramework</code>【ツ】</h2>
 </p>
 
@@ -13,7 +13,7 @@
 ![os](https://img.shields.io/badge/os-windows-yellow.svg?style=flat-square&logo=windows)
 ![editor](https://img.shields.io/badge/editor-VSCode-blueviolet.svg?style=flat-square&logo=visual-studio-code)
 
-[Description](#description) | [Features](#features) | [Getting started](#getting-started) | [Configuration](#configuration) | [Keyboard Shortcuts](#keyboard-shortcuts) | [Tested](#tested) | [Contributing](#contributing)
+[Description](#description) | [Features](#features) | [Getting started](#getting-started) | [Configuration](#configuration) | [Keyboard shortcuts](#keyboard-shortcuts) | [Contributing](#contributing) | [License](#license) | [Acknowledgements](#acknowledgements)
 
 ## Description
 
@@ -21,15 +21,21 @@ Au3LogFramework is a logging and reporting tool for Gherkin syntax like Cucumber
 
 ## Features
 
-... to be defined ...
+To be defined [...]
 
 ## Getting started
 
-... to be defined ...
+#### *Preconditions*
+
+To be defined [...]
+
+#### *Installation*
+
+To be defined [...]
 
 ## Configuration
 
-... to be defined ...
+To be defined [...]
 
 ## Keyboard Shortcuts
 
@@ -38,21 +44,23 @@ Au3LogFramework is a logging and reporting tool for Gherkin syntax like Cucumber
 | ...    | ...      |
 | ...    | ...      |
 
-## Tested
-
-> SUT (system under test)
-
-| Property       | Win 7       | Win 10          | Win 10 Tablet |
-| :------------- | :---------- | :-------------- | :------------ |
-| @AutoItExe     | autoit3.exe | autoit3_x64.exe | autoit3.exe   |
-| @AutoItVersion | 3.3.14.2    | 3.3.14.2        | 3.3.14.5      |
-| @CPUArch       | X64         | X64             | X64           |
-| @OSArch        | X64         | X64             | X86           |
-| @OSVersion     | WIN_7       | WIN_10          | Win_10        |
-
 ## Contributing
 
 Just look at [CONTRIBUTING](https://github.com/Sven-Seyfert/Au3LogFramework/blob/master/docs/CONTRIBUTING.md), thank you!
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/Sven-Seyfert/Au3LogFramework/blob/master/LICENSE.md) for more information.
+
+## Acknowledgements
+
+- Opportunity by [GitHub](https://github.com)
+- Badges by [Shields](https://shields.io)
+- Utilities components by
+  - none
+- Fonts components by
+  - [FontAwesome](https://fontawesome.com) (Font Toolkit); [LICENSE](https://github.com/Sven-Seyfert/Au3LogFramework/blob/master/fonts/fontAwesome/licenses)
+  - [Hack](https://github.com/source-foundry/Hack) (typeface designed for source code); [LICENSE](https://github.com/Sven-Seyfert/Au3LogFramework/blob/master/fonts/hack/licenses)
 
 ##
 
