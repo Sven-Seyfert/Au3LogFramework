@@ -14,7 +14,7 @@ Global $sHtmlHead = _
     '<body>' & @CRLF
 
 Global $sHtmlMain = _
-    _spaces( 4 ) & '<img src="../images/logo.png" class="logo" />' & @CRLF & _
+    _spaces( 4 ) & '<img src="../images/icon.png" class="logo" />' & @CRLF & _
     _spaces( 4 ) & '<h2 id="headline">' & $sProgramName & '</h2><br />' & @CRLF & _
     _spaces( 4 ) & '<div class="information">' & @CRLF & _
     _spaces( 8 ) & '<b><i class="fa fa-laptop"></i> COMPUTER:</b> ' & @ComputerName & '&nbsp;&nbsp;&nbsp;' & _
