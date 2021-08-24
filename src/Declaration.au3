@@ -6,13 +6,13 @@ Global $sExecutionTime                         = @YEAR & '-' & @MON & '-' & @MDA
 Global $sImageExtension                        = '.jpg'
 Global $sScreenshotTime                        = ''
 
-Global $aPath[$iEnumVariables]
+Global $aPath[$iMaxEnumIndex]
        $aPath[$eConfig]                        = _PathFull( '..\config\' )
        $aPath[$eJs]                            = _PathFull( '..\js\' )
        $aPath[$eOutput]                        = _PathFull( '..\output\' )
        $aPath[$eReports]                       = _PathFull( '..\reports\' )
 
-Global $aFile[$iEnumVariables]
+Global $aFile[$iMaxEnumIndex]
        $aFile[$eConfig]                        = $aPath[$eConfig] & 'config.ini'
        $aFile[$eJs]                            = $aPath[$eJs] & 'script.js'
 
@@ -31,12 +31,12 @@ If StringLower( $bShouldDisplayResolutionBeAdjusted ) == 'true' Then
        $iDisplayHeight = StringSplit( $sDisplayResolutionForScreenshots, 'x' )[2]
 EndIf
 
-Global $aColor[$iEnumVariables]
+Global $aColor[$iMaxEnumIndex]
        $aColor[$eOk]                           = '41B3A3'
        $aColor[$eWarn]                         = 'FBC02D'
        $aColor[$eError]                        = 'E7717D'
 
-Global $aIni[$iEnumVariables]
+Global $aIni[$iMaxEnumIndex]
        $aIni[$eCountError]                     = ''
        $aIni[$eCountOk]                        = ''
        $aIni[$eCountWarn]                      = ''
@@ -52,7 +52,7 @@ Global $aIni[$iEnumVariables]
        $aIni[$eTestScenarioName]               = ''
        $aIni[$eTestScenarioNumber]             = ''
 
-Global $aCmdArg[$iEnumVariables]
+Global $aCmdArg[$iMaxEnumIndex]
        $aCmdArg[$eAu3LogFrameworkAction]       = ''
        $aCmdArg[$eTestObject]                  = ''
        $aCmdArg[$eTestScenario]                = ''

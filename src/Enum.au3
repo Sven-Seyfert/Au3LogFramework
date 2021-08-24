@@ -1,4 +1,3 @@
-Global $iEnumVariables = 34
 Global Enum _
     $eAu3LogFrameworkAction, _
     $eConfig, _
@@ -33,4 +32,5 @@ Global Enum _
     $eTestScenarioStepDescription, _
     $eTestScenarioStepType, _
     $eWarn, _
-    $eWasThereAWarnInTheCurrentTestScenario
+    $eWasThereAWarnInTheCurrentTestScenario, _
+    $iMaxEnumIndex
