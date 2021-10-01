@@ -22,6 +22,7 @@ Global $iDisplayHeight                         = @DesktopHeight
 Global $iAmountOfLastReportsToStore            = IniRead( $aFile[$eConfig], 'Settings', 'AmountOfLastReportsToStore', '20' )
 Global $bDebug                                 = IniRead( $aFile[$eConfig], 'Settings', 'Debug', 'False' )
 Global $sDisplayResolutionForScreenshots       = StringStripWS( IniRead( $aFile[$eConfig], 'Settings', 'DisplayResolutionForScreenshots', '1920x1080' ), 8 )
+Global $bMaximizeWindowInCaseOfTakenScreenshot = IniRead( $aFile[$eConfig], 'Settings', 'MaximizeWindowInCaseOfTakenScreenshot', 'True' )
 Global $bShouldDisplayResolutionBeAdjusted     = IniRead( $aFile[$eConfig], 'Settings', 'ShouldDisplayResolutionBeAdjusted', 'False' )
 Global $bSilentModeWithoutMsgBoxes             = IniRead( $aFile[$eConfig], 'Settings', 'SilentModeWithoutMsgBoxes', 'False' )
 Global $sTestRunner                            = IniRead( $aFile[$eConfig], 'Settings', 'TestRunner', '' )

@@ -1,7 +1,11 @@
 Func _createScreenshot()
     Local $hProgram = _getWindowHandle( $aCmdArg[$eSystemUnderTestTitle] )
     WinActivate( $hProgram )
-    WinSetState( $hProgram, '', @SW_MAXIMIZE )
+
+    If StringLower( $bMaximizeWindowInCaseOfTakenScreenshot ) == 'true' Then
+        WinSetState( $hProgram, '', @SW_MAXIMIZE )
+    EndIf
+
     _ScreenCapture_CaptureWnd( $aIni[$eOutputPath] & $sScreenshotTime & $sImageExtension, $hProgram )
 EndFunc
 
