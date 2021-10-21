@@ -1,8 +1,13 @@
 ; compiler information for AutoIt
+#pragma compile(CompanyName, © SOLVE SMART)
+#pragma compile(FileVersion, 1.1.0)
+#pragma compile(LegalCopyright, © Sven Seyfert)
+#pragma compile(ProductName, Example)
+#pragma compile(ProductVersion, 1.1.0 - 2021-10-21)
+
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
-#AutoIt3Wrapper_Icon=..\..\media\favicon.ico
-#AutoIt3Wrapper_Res_Description=Example (2021-04-09)
-#AutoIt3Wrapper_Res_Fileversion=0.9
+#AutoIt3Wrapper_Icon=..\media\favicon.ico
+#AutoIt3Wrapper_Outfile_x64=Example.exe
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
