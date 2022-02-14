@@ -91,7 +91,7 @@ Switch $iArgumentCount
        $aCmdArg[$eSystemUnderTestTitle]        = $CmdLine[8]
 
     Case Else
-       _showErrorMessage('Wrong count of arguments is used while calling ' & $sProgramName & '. Please read the documentation (README.md).')
+       _ShowErrorMessage('Wrong count of arguments is used while calling ' & $sProgramName & '. Please read the documentation (README.md).')
 
        Exit -1
 EndSwitch

@@ -1,5 +1,5 @@
-Func _createScreenshot()
-    Local $hProgram = _getWindowHandle($aCmdArg[$eSystemUnderTestTitle])
+Func _CreateScreenshot()
+    Local $hProgram = _GetWindowHandle($aCmdArg[$eSystemUnderTestTitle])
     WinActivate($hProgram)
 
     If StringLower($bMaximizeWindowInCaseOfTakenScreenshot) == 'true' Then
@@ -9,7 +9,7 @@ Func _createScreenshot()
     _ScreenCapture_CaptureWnd($aIni[$eOutputPath] & $sScreenshotTime & $sImageExtension, $hProgram)
 EndFunc
 
-Func _getWindowHandle($sTitle)
+Func _GetWindowHandle($sTitle)
     Local $aListOfOpenWindows = WinList()
 
     For $i = 1 To $aListOfOpenWindows[0][0] Step 1

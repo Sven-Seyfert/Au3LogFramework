@@ -1,10 +1,10 @@
-Func _showErrorMessage($sText)
+Func _ShowErrorMessage($sText)
     If StringLower($bSilentModeWithoutMsgBoxes) == 'false' Then
         MsgBox($iMsgBoxErrorIcon, 'Error', $sText, 30)
     EndIf
 EndFunc
 
-Func _setMaxDirectories($sPath, $i = 20)
+Func _SetMaxDirectories($sPath, $i = 20)
     Local $aDirectories = _FileListToArray($sPath, '*', 2, True)
     If IsArray($aDirectories) Then
         Local $iDirectoriesCount = $aDirectories[0]
@@ -16,7 +16,7 @@ Func _setMaxDirectories($sPath, $i = 20)
     EndIf
 EndFunc
 
-Func _setMaxFiles($sPath, $i = 20)
+Func _SetMaxFiles($sPath, $i = 20)
     Local $aFiles = _FileListToArray($sPath, '*.html', 1, True)
     If IsArray($aFiles) Then
         Local $iFilesCount = $aFiles[0]
@@ -28,14 +28,14 @@ Func _setMaxFiles($sPath, $i = 20)
     EndIf
 EndFunc
 
-Func _writeFile($sFile, $sText)
+Func _WriteFile($sFile, $sText)
     Local $hFile = FileOpen($sFile, $iFileOpenMode)
     FileWrite($hFile, $sText)
     FileClose($hFile)
 EndFunc
 
-Func _writeToFileLine($sFilePath, $iLine, $sText, $bOverWrite = True)
-    If StringLower($bDebug) == 'true' Then _debug($sFilePath, $iLine, $sText, $bOverWrite)
+Func _WriteToFileLine($sFilePath, $iLine, $sText, $bOverWrite = True)
+    If StringLower($bDebug) == 'true' Then _Debug($sFilePath, $iLine, $sText, $bOverWrite)
 
     Local $aFileContent    = FileReadToArray($sFilePath)
     Local $iLineCount      = UBound($aFileContent) - 1
@@ -60,7 +60,7 @@ Func _writeToFileLine($sFilePath, $iLine, $sText, $bOverWrite = True)
     FileClose($hFile)
 EndFunc
 
-Func _getFileLineNumberForLastSearchMatch($sFilePath, $sText)
+Func _GetFileLineNumberForLastSearchMatch($sFilePath, $sText)
     Local $aFileContent = FileReadToArray($sFilePath)
     Local $iLineCount   = UBound($aFileContent) - 1
 
@@ -69,11 +69,11 @@ Func _getFileLineNumberForLastSearchMatch($sFilePath, $sText)
     Next
 EndFunc
 
-Func _getDiffTime($sFrom, $sTo)
-    Return _secondsToMinutes(_DateDiff('s', $sFrom, $sTo))
+Func _GetDiffTime($sFrom, $sTo)
+    Return _SecondsToMinutes(_DateDiff('s', $sFrom, $sTo))
 EndFunc
 
-Func _secondsToMinutes($iGivenSeconds)
+Func _SecondsToMinutes($iGivenSeconds)
     Local $iHours   = Int($iGivenSeconds / 3600)
     Local $iMinutes = Int(Mod($iGivenSeconds, 3600) / 60)
     Local $iSeconds = Mod($iGivenSeconds, 60)
@@ -83,7 +83,7 @@ Func _secondsToMinutes($iGivenSeconds)
     If $iSeconds <= 59 Then Return StringFormat('%02d', $iSeconds) & ' seconds'
 EndFunc
 
-Func _setDisplayResolution()
+Func _SetDisplayResolution()
     Local Const $CDS_TEST               = 0x00000002
     Local Const $CDS_UPDATEREGISTRY     = 0x00000001
     Local Const $DM_BITSPERPEL          = 0x00040000
@@ -122,6 +122,6 @@ Func _setDisplayResolution()
     $tDEVMODE = ''
 EndFunc
 
-Func _spaces($iAmountOfSpaces)
+Func _Spaces($iAmountOfSpaces)
     Return _StringRepeat(' ', $iAmountOfSpaces)
 EndFunc

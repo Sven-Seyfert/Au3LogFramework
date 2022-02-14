@@ -1,9 +1,9 @@
 ; compiler information for AutoIt
 #pragma compile(CompanyName, © SOLVE SMART)
-#pragma compile(FileVersion, 1.4.0)
+#pragma compile(FileVersion, 1.5.0)
 #pragma compile(LegalCopyright, © Sven Seyfert)
 #pragma compile(ProductName, Au3LogFramework)
-#pragma compile(ProductVersion, 1.4.0 - 2022-02-10)
+#pragma compile(ProductVersion, 1.5.0 - 2022-02-14)
 
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
@@ -43,27 +43,27 @@ If $aInst[0][0] > 1 Then Exit
 Switch $aCmdArg[$eAu3LogFrameworkAction]
     Case 'start'
         If StringLower($bShouldDisplayResolutionBeAdjusted) == 'true' Then
-            _setDisplayResolution()
+            _SetDisplayResolution()
             Sleep(1500)
         EndIf
 
-        _createReportStructure()
+        _CreateReportStructure()
 
     Case 'test'
         Switch $aCmdArg[$eTestScenarioState]
             Case 'ok', 'screenshot'
-                _createTestScenarioOrScenarioStep($aColor[$eOk], $aCmdArg[$eTestScenarioState])
+                _CreateTestScenarioOrScenarioStep($aColor[$eOk], $aCmdArg[$eTestScenarioState])
 
             Case 'warn'
-                _createTestScenarioOrScenarioStep($aColor[$eWarn], $aCmdArg[$eTestScenarioState])
+                _CreateTestScenarioOrScenarioStep($aColor[$eWarn], $aCmdArg[$eTestScenarioState])
 
             Case 'error'
-                _createTestScenarioOrScenarioStep($aColor[$eError], $aCmdArg[$eTestScenarioState])
+                _CreateTestScenarioOrScenarioStep($aColor[$eError], $aCmdArg[$eTestScenarioState])
         EndSwitch
 
     Case 'stop'
-        $aIni[$eReportFile] = _readIniValue('ReportFile')
-        _setTestScenarioExecutionTime($aIni[$eReportFile])
+        $aIni[$eReportFile] = _ReadIniValue('ReportFile')
+        _SetTestScenarioExecutionTime($aIni[$eReportFile])
 
         If StringLower($bSilentModeWithoutMsgBoxes) == 'false' Then
             If MsgBox($iMsgBoxQuestionIcon, 'Question', 'Processing done.' & @CRLF & 'Open log report in default browser?', 30) == 6 Then
@@ -71,8 +71,8 @@ Switch $aCmdArg[$eAu3LogFrameworkAction]
             EndIf
         EndIf
 
-        _setMaxDirectories($aPath[$eOutput], $iAmountOfLastReportsToStore)
-        _setMaxFiles($aPath[$eReports], $iAmountOfLastReportsToStore)
+        _SetMaxDirectories($aPath[$eOutput], $iAmountOfLastReportsToStore)
+        _SetMaxFiles($aPath[$eReports], $iAmountOfLastReportsToStore)
 
         Exit
 EndSwitch

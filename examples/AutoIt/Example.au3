@@ -1,12 +1,12 @@
 ; compiler information for AutoIt
 #pragma compile(CompanyName, © SOLVE SMART)
-#pragma compile(FileVersion, 1.4.0)
+#pragma compile(FileVersion, 1.5.0)
 #pragma compile(LegalCopyright, © Sven Seyfert)
 #pragma compile(ProductName, Example)
-#pragma compile(ProductVersion, 1.4.0 - 2022-02-10)
+#pragma compile(ProductVersion, 1.5.0 - 2022-02-14)
 
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
-#AutoIt3Wrapper_Icon=..\media\favicon.ico
+#AutoIt3Wrapper_Icon=..\..\media\favicon.ico
 #AutoIt3Wrapper_Outfile_x64=Example.exe
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
@@ -47,7 +47,7 @@ Global $sFileCurrentReport
 
 
 ; functions --------------------------------------------------------------------
-Func _callAu3LogFramework($iAu3LogFrameworkAction, $sTestObject = '', $sTestScenario = '', $sTestScenarioState = '', $sTestScenarioStepType = '', $sTestScenarioStepDescription = '', $sTestScenarioAdditionalInfo = '', $sSystemUnderTestTitle = '')
+Func _CallAu3LogFramework($iAu3LogFrameworkAction, $sTestObject = '', $sTestScenario = '', $sTestScenarioState = '', $sTestScenarioStepType = '', $sTestScenarioStepDescription = '', $sTestScenarioAdditionalInfo = '', $sSystemUnderTestTitle = '')
     Local $sArguments = _
         '"' & $iAu3LogFrameworkAction & '" ' & _
         '"' & $sTestObject & '" ' & _
@@ -63,39 +63,39 @@ Func _callAu3LogFramework($iAu3LogFrameworkAction, $sTestObject = '', $sTestScen
 
     ShellExecuteWait(@ComSpec, ' /C cd "' & $sAu3LogFrameworkPath & '" && ' & $sAu3LogFrameworkExe & ' ' & $sArguments, '', '', @SW_HIDE)
 
-    _randomSleep()
+    _RandomSleep()
 EndFunc
 
-Func _getCurrentCreatedReport()
+Func _GetCurrentCreatedReport()
     Local $aFileList  = _FileListToArray($sAu3LogFrameworkReportPath, '*.html', 1, True)
     Local $iFileCount = $aFileList[0]
 
     Return $aFileList[$iFileCount]
 EndFunc
 
-Func _writeFile($sFolderReport, $sText)
+Func _WriteFile($sFolderReport, $sText)
     Local $hFile = FileOpen($sFolderReport, $iFileOpenMode)
     FileWrite($hFile, $sText)
     FileClose($hFile)
 EndFunc
 
-Func _getJustFileName($sFilePath)
+Func _GetJustFileName($sFilePath)
     Return StringRegExpReplace($sFilePath, '(.+?)\\', '', 0)
 EndFunc
 
-Func _createAdditionalInfosFile($sFile, $sText)
-    Local $sFolderReport        = StringReplace(_getJustFileName($sFile), '.html', '\')
+Func _CreateAdditionalInfosFile($sFile, $sText)
+    Local $sFolderReport        = StringReplace(_GetJustFileName($sFile), '.html', '\')
     Local $sTimestamp           = @YEAR & '-' & @MON & '-' & @MDAY & ' ' & @HOUR & '''' & @MIN & '''' & @SEC & '''' & @MSEC
     Local $sFileAdditionalInfos = $sAu3LogFrameworkOutputPath & $sFolderReport & $sTimestamp & '.txt'
 
     ConsoleWrite($sFileAdditionalInfos & @CRLF)
 
-    _writeFile($sFileAdditionalInfos, $sText)
+    _WriteFile($sFileAdditionalInfos, $sText)
 
     Return $sFileAdditionalInfos
 EndFunc
 
-Func _getHtmlATagWithAdditionalInfosFileLink($sFile)
+Func _GetHtmlATagWithAdditionalInfosFileLink($sFile)
     Local $sHtmlHref = StringReplace($sFile, '\', '/')
           $sHtmlHref = StringReplace($sHtmlHref, '../../', '../')
     Local $sHtmlATag = '"<a href="' & $sHtmlHref & '" title="Additional infos" style="color: #DC3912;" target="_blank"><i class="fa fa-info-circle"></i></a>'
@@ -103,12 +103,12 @@ Func _getHtmlATagWithAdditionalInfosFileLink($sFile)
     Return StringReplace($sHtmlATag, '"', '""')
 EndFunc
 
-Func _getAdditionalInfoHtmlATag()
-    Local $sFileAdditionalInfos = _createAdditionalInfosFile($sFileCurrentReport, 'FailureMessage:' & @CRLF & _randomWords() & @CRLF & @CRLF & 'StackTrace:' & @CRLF & _randomWords())
-    Return _getHtmlATagWithAdditionalInfosFileLink($sFileAdditionalInfos)
+Func _GetAdditionalInfoHtmlATag()
+    Local $sFileAdditionalInfos = _CreateAdditionalInfosFile($sFileCurrentReport, 'FailureMessage:' & @CRLF & _RandomWords() & @CRLF & @CRLF & 'StackTrace:' & @CRLF & _RandomWords())
+    Return _GetHtmlATagWithAdditionalInfosFileLink($sFileAdditionalInfos)
 EndFunc
 
-Func _randomWords($iWords = 30)
+Func _RandomWords($iWords = 30)
     Local $sText = ''
 
     For $i = 1 To $iWords Step 1
@@ -128,46 +128,46 @@ Func _randomWords($iWords = 30)
     Return $sText
 EndFunc
 
-Func _randomSleep()
+Func _RandomSleep()
     Sleep(Random(500, 1250, 1))
 EndFunc
 
 
 
 ; processing -------------------------------------------------------------------
-_callAu3LogFramework('start', $sTestObjectName)
+_CallAu3LogFramework('start', $sTestObjectName)
 
-Global $sFileCurrentReport = _getCurrentCreatedReport()
+Global $sFileCurrentReport = _GetCurrentCreatedReport()
 
-_callAu3LogFramework('test', $sTestObjectName, 'First test name', 'Ok', 'Given', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'First test name', 'Screenshot', 'When', 'Test with status Screenshot', '', $sScreenshotWindow)
-_callAu3LogFramework('test', $sTestObjectName, 'First test name', 'Ok', 'Then', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'First test name', 'Ok', 'Given', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'First test name', 'Screenshot', 'When', 'Test with status Screenshot', '', $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'First test name', 'Ok', 'Then', 'Test with status Ok')
 
-_callAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Ok', 'Given', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Ok', 'When', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Ok', 'When', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Screenshot', 'When', 'Test with status Screenshot', '', $sScreenshotWindow)
-_callAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Warn', 'Then', 'Test with status Warn', _getAdditionalInfoHtmlATag(), $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Ok', 'Given', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Ok', 'When', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Ok', 'When', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Screenshot', 'When', 'Test with status Screenshot', '', $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'Second test name', 'Warn', 'Then', 'Test with status Warn', _GetAdditionalInfoHtmlATag(), $sScreenshotWindow)
 
-_callAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Ok', 'Given', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Ok', 'When', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Warn', 'Then', 'Test with status Warn', _getAdditionalInfoHtmlATag(), $sScreenshotWindow)
-_callAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Screenshot', 'When', 'Test with status Screenshot', '', $sScreenshotWindow)
-_callAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Error', 'Then', 'Test with status Error', _getAdditionalInfoHtmlATag(), $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Ok', 'Given', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Ok', 'When', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Warn', 'Then', 'Test with status Warn', _GetAdditionalInfoHtmlATag(), $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Screenshot', 'When', 'Test with status Screenshot', '', $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'Third test name', 'Error', 'Then', 'Test with status Error', _GetAdditionalInfoHtmlATag(), $sScreenshotWindow)
 
-_callAu3LogFramework('test', $sTestObjectName, 'Fourth test name', 'Warn', 'Given', 'Test with status Warn', '', $sScreenshotWindow)
-_callAu3LogFramework('test', $sTestObjectName, 'Fourth test name', 'Ok', 'When', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Fourth test name', 'Ok', 'Then', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Fourth test name', 'Warn', 'Given', 'Test with status Warn', '', $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'Fourth test name', 'Ok', 'When', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Fourth test name', 'Ok', 'Then', 'Test with status Ok')
 
-_callAu3LogFramework('test', $sTestObjectName, 'Sixth test name', 'Warn', 'Given', 'Test with status Warn', _getAdditionalInfoHtmlATag(), $sScreenshotWindow)
-_callAu3LogFramework('test', $sTestObjectName, 'Sixth test name', 'Error', 'Then', 'Test with status Error', _getAdditionalInfoHtmlATag(), $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'Sixth test name', 'Warn', 'Given', 'Test with status Warn', _GetAdditionalInfoHtmlATag(), $sScreenshotWindow)
+_CallAu3LogFramework('test', $sTestObjectName, 'Sixth test name', 'Error', 'Then', 'Test with status Error', _GetAdditionalInfoHtmlATag(), $sScreenshotWindow)
 
-_callAu3LogFramework('test', $sTestObjectName, 'Seventh test name', 'Ok', 'Given', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Seventh test name', 'Ok', 'When', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Seventh test name', 'Ok', 'Then', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Seventh test name', 'Ok', 'Given', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Seventh test name', 'Ok', 'When', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Seventh test name', 'Ok', 'Then', 'Test with status Ok')
 
-_callAu3LogFramework('test', $sTestObjectName, 'Eighth test name', 'Ok', 'Given', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Eighth test name', 'Ok', 'When', 'Test with status Ok')
-_callAu3LogFramework('test', $sTestObjectName, 'Eighth test name', 'Ok', 'Then', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Eighth test name', 'Ok', 'Given', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Eighth test name', 'Ok', 'When', 'Test with status Ok')
+_CallAu3LogFramework('test', $sTestObjectName, 'Eighth test name', 'Ok', 'Then', 'Test with status Ok')
 
-_callAu3LogFramework('stop')
+_CallAu3LogFramework('stop')
