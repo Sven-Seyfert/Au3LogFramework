@@ -4,7 +4,7 @@ Global $sHtmlHead = _
     '<head>' & @CRLF & _
     _Spaces(4) & '<title>#{$sHtmlReportTitle}#</title>' & @CRLF & _
     _Spaces(4) & '<meta charset="UTF-8" />' & @CRLF & _
-    _Spaces(4) & '<link rel="shortcut icon" href="../media/favicon.ico" type="image/x-icon" />' & @CRLF & _
+    _Spaces(4) & '<link rel="shortcut icon" href="../media/icons/favicon.ico" type="image/x-icon" />' & @CRLF & _
     _Spaces(4) & '<link rel="stylesheet" href="../css/fontAwesome.css">' & @CRLF & _
     _Spaces(4) & '<link rel="stylesheet" href="../css/style.css">' & @CRLF & _
     _Spaces(4) & '<script src="../js/jQuery.min.js"></script>' & @CRLF & _
@@ -14,7 +14,7 @@ Global $sHtmlHead = _
     '<body>' & @CRLF
 
 Global $sHtmlMain = _
-    _Spaces(4) & '<img src="../images/icon.png" class="logo" />' & @CRLF & _
+    _Spaces(4) & '<img src="../media/images/icon.png" class="logo" />' & @CRLF & _
     _Spaces(4) & '<h2 id="headline">' & $sProgramName & '</h2><br />' & @CRLF & _
     _Spaces(4) & '<div class="information">' & @CRLF & _
     _Spaces(8) & '<b><i class="fa fa-laptop"></i> COMPUTER:</b> ' & @ComputerName & '&nbsp;&nbsp;&nbsp;' & _
