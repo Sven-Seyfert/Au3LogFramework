@@ -1,6 +1,6 @@
 ## MIT License
 
-#### Copyright (c) 2022 Sven Seyfert
+#### Copyright (c) 2023 Sven Seyfert
 
 | 🟩 Permissions | 🟦 Conditions                | 🟥 Limitations |
 | :------------- | :--------------------------- | :------------ |
