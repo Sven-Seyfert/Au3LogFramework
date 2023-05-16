@@ -1,9 +1,9 @@
 ; compiler information for AutoIt
 #pragma compile(CompanyName, © SOLVE SMART)
-#pragma compile(FileVersion, 1.7.0)
+#pragma compile(FileVersion, 1.8.0)
 #pragma compile(LegalCopyright, © Sven Seyfert)
 #pragma compile(ProductName, Example)
-#pragma compile(ProductVersion, 1.7.0 - 2022-08-03)
+#pragma compile(ProductVersion, 1.8.0 - 2023-05-16)
 
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\..\media\icons\favicon.ico
@@ -129,7 +129,7 @@ Func _RandomWords($iWords = 30)
 EndFunc
 
 Func _RandomSleep()
-    Sleep(Random(500, 1250, 1))
+    ;~ Sleep(Random(500, 1250, 1))
 EndFunc
 
 

@@ -11,6 +11,17 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 ## [Unreleased]
 
+## [1.8.0] - 2023-05-16
+
+### Changed
+
+- Update copyright year to 2023.
+- Version bump.
+
+### Security
+
+- Update jQuery version to v3.7.0.
+
 ## [1.7.0] - 2022-08-03
 
 ### Changed
@@ -78,7 +89,8 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 - AutoIt Code formatting to the common notation without additional spaces after opened brackets and before closed brackets.
 
-[Unreleased]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.7.0...HEAD
+[Unreleased]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.8.0...HEAD
+[1.8.0]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.4.0...v1.5.0
