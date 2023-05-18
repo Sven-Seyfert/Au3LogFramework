@@ -129,7 +129,7 @@ Func _RandomWords($iWords = 30)
 EndFunc
 
 Func _RandomSleep()
-    ;~ Sleep(Random(500, 1250, 1))
+    Sleep(Random(500, 1250, 1))
 EndFunc
 
 
