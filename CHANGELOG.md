@@ -11,6 +11,12 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 ## [Unreleased]
 
+## [1.8.1] - 2023-05-18
+
+### Fixed
+
+- Remove comment to get the missing Sleep function back.
+
 ## [1.8.0] - 2023-05-16
 
 ### Changed
@@ -89,7 +95,8 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 - AutoIt Code formatting to the common notation without additional spaces after opened brackets and before closed brackets.
 
-[Unreleased]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.8.0...HEAD
+[Unreleased]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.8.1...HEAD
+[1.8.1]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.8.0...v1.8.1
 [1.8.0]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/Sven-Seyfert/Au3LogFramework/compare/v1.5.0...v1.6.0
